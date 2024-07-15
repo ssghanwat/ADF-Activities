@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "ds_source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_saallpurposeadls",
