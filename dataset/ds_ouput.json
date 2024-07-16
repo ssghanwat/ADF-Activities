@@ -1,0 +1,59 @@
+{
+	"name": "ds_ouput",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_saallpurposeadls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "sink"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "State_code",
+				"type": "String"
+			},
+			{
+				"name": "Table_number",
+				"type": "String"
+			},
+			{
+				"name": "Effective_date",
+				"type": "String"
+			},
+			{
+				"name": "Exp_date",
+				"type": "String"
+			},
+			{
+				"name": "Terr_code",
+				"type": "String"
+			},
+			{
+				"name": "Amount",
+				"type": "String"
+			},
+			{
+				"name": "Deductible",
+				"type": "String"
+			},
+			{
+				"name": "Symbol",
+				"type": "String"
+			},
+			{
+				"name": "Factor",
+				"type": "String"
+			}
+		]
+	}
+}
