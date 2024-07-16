@@ -106,6 +106,9 @@
 			},
 			"files": {
 				"type": "Array"
+			},
+			"variable": {
+				"type": "Array"
 			}
 		},
 		"folder": {

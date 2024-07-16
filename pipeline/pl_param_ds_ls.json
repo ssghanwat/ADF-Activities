@@ -51,13 +51,7 @@
 				"inputs": [
 					{
 						"referenceName": "ds_source",
-						"type": "DatasetReference",
-						"parameters": {
-							"f_name": {
-								"value": "@pipeline().parameters.file_name",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
