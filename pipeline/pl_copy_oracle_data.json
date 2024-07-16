@@ -5,16 +5,7 @@
 			{
 				"name": "Copy oracle data",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [
-					{
-						"activity": "Get Table names",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.00:10:00",
 					"retry": 0,
@@ -77,19 +68,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Get Table names",
-				"type": "GetMetadata",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.00:10:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": []
 			}
 		],
 		"parameters": {
