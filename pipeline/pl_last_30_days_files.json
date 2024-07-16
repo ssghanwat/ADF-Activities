@@ -1,0 +1,71 @@
+{
+	"name": "pl_last_30_days_files",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_binary",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems",
+						"lastModified"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"modifiedDatetimeStart": {
+							"value": "@addDays(utcNow(), -2)",
+							"type": "Expression"
+						},
+						"modifiedDatetimeEnd": {
+							"value": "@addhours(addDays(utcNow(), -1),10)",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "name",
+					"value": {
+						"value": "@adddays(utcNow(), -1)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"name": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "activities"
+		},
+		"annotations": []
+	}
+}
