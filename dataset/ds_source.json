@@ -5,20 +5,11 @@
 			"referenceName": "ls_saallpurposeadls",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"f_name": {
-				"type": "String"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "@dataset().f_name",
-					"type": "Expression"
-				},
 				"fileSystem": "source"
 			},
 			"columnDelimiter": ",",
