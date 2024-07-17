@@ -1,0 +1,17 @@
+{
+	"name": "ds_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_saallpurposeadls",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "source"
+			}
+		}
+	}
+}

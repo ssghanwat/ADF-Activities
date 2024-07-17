@@ -1,9 +1,9 @@
 {
-	"name": "pl_copy_data",
+	"name": "pl_copy_oracle_data",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data",
+				"name": "Copy oracle data",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,16 +16,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"wildcardFileName": "*.csv",
-							"enablePartitionDiscovery": false
+						"type": "OracleSource",
+						"oracleReaderQuery": {
+							"value": "@concat('select * from ',pipeline().parameters.schema_name,'.',pipeline().parameters.table_name)",
+							"type": "Expression"
 						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+						"partitionOption": "None",
+						"convertDecimalToInteger": false,
+						"queryTimeout": "02:00:00"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -39,7 +37,6 @@
 						}
 					},
 					"enableStaging": false,
-					"enableSkipIncompatibleRow": true,
 					"translator": {
 						"type": "TabularTranslator",
 						"typeConversion": true,
@@ -51,8 +48,18 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_source",
-						"type": "DatasetReference"
+						"referenceName": "ds_oracle",
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaName": {
+								"value": "@pipeline().parameters.schema_name",
+								"type": "Expression"
+							},
+							"tableName": {
+								"value": "@pipeline().parameters.table_name",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -63,6 +70,14 @@
 				]
 			}
 		],
+		"parameters": {
+			"schema_name": {
+				"type": "string"
+			},
+			"table_name": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "activities"
 		},

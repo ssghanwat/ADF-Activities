@@ -1,13 +1,13 @@
 {
-	"name": "pl_copy_data",
+	"name": "pl_copy_azure_sql_oracle",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data",
+				"name": "Copy azure sql table to oracle",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
-					"timeout": "0.00:10:00",
+					"timeout": "0.12:00:00",
 					"retry": 0,
 					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
@@ -16,30 +16,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"wildcardFileName": "*.csv",
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT * FROM DEMO.EMPLOYEE1;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".parquet"
-						}
+						"type": "OracleSink",
+						"writeBatchSize": 10000
 					},
 					"enableStaging": false,
-					"enableSkipIncompatibleRow": true,
 					"translator": {
 						"type": "TabularTranslator",
 						"typeConversion": true,
@@ -51,13 +37,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_source",
+						"referenceName": "ds_azure_sql",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_sink",
+						"referenceName": "ds_oracle",
 						"type": "DatasetReference"
 					}
 				]

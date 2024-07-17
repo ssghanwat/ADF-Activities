@@ -1,0 +1,67 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_ouput",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "cleanedColumn"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          State_code as string,",
+				"          Table_number as string,",
+				"          Effective_date as string,",
+				"          Exp_date as string,",
+				"          Terr_code as string,",
+				"          Amount as string,",
+				"          Deductible as string,",
+				"          Symbol as string,",
+				"          Factor as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(Deductible = regexReplace(toString(Deductible),',',''),",
+				"          Amount = regexExtract(Amount, 'More than \\\\d+', 2)) ~> cleanedColumn",
+				"cleanedColumn sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          State_code as string,",
+				"          Table_number as string,",
+				"          Effective_date as string,",
+				"          Exp_date as string,",
+				"          Terr_code as string,",
+				"          Amount as string,",
+				"          Deductible as string,",
+				"          Symbol as string,",
+				"          Factor as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

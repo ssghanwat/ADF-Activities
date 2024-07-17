@@ -1,0 +1,16 @@
+{
+	"name": "ds_oracle",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_oracle",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ORACLE_SCHEMA",
+			"table": "EMPLOYEE2"
+		}
+	}
+}

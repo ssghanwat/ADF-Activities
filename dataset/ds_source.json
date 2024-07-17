@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "ds_source",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_saallpurposeadls",
@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Data_File1.csv",
+				"fileName": "New XLSX Worksheet.csv",
+				"folderPath": "data-files",
 				"fileSystem": "source"
 			},
 			"columnDelimiter": ",",
