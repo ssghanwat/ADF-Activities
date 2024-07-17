@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "New XLSX Worksheet.csv",
 				"folderPath": "data-files",
 				"fileSystem": "source"
 			},
@@ -18,43 +19,6 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "State_code",
-				"type": "String"
-			},
-			{
-				"name": "Table_number",
-				"type": "String"
-			},
-			{
-				"name": "Effective_date",
-				"type": "String"
-			},
-			{
-				"name": "Exp_date",
-				"type": "String"
-			},
-			{
-				"name": "Terr_code",
-				"type": "String"
-			},
-			{
-				"name": "Amount",
-				"type": "String"
-			},
-			{
-				"name": "Deductible",
-				"type": "String"
-			},
-			{
-				"name": "Symbol",
-				"type": "String"
-			},
-			{
-				"name": "Factor",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }

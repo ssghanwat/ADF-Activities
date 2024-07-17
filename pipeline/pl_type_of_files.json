@@ -123,13 +123,7 @@
 												"outputs": [
 													{
 														"referenceName": "ds_sink",
-														"type": "DatasetReference",
-														"parameters": {
-															"fileName": {
-																"value": "@concat('csv/', item().name)\n",
-																"type": "Expression"
-															}
-														}
+														"type": "DatasetReference"
 													}
 												]
 											}
@@ -196,10 +190,7 @@
 												"outputs": [
 													{
 														"referenceName": "ds_sink",
-														"type": "DatasetReference",
-														"parameters": {
-															"fileName": "@concat('excel/',item().name)"
-														}
+														"type": "DatasetReference"
 													}
 												]
 											}
