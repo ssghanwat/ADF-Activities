@@ -87,25 +87,6 @@
 									"type": "Expression"
 								}
 							}
-						},
-						{
-							"name": "Filter1",
-							"type": "Filter",
-							"dependsOn": [
-								{
-									"activity": "Set variable1",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"items": {
-									"value": "@variables('file_names')",
-									"type": "Expression"
-								}
-							}
 						}
 					]
 				}
