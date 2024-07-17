@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-allpurpose"
+		},
+		"ls_azure_sql_password": {
+			"value": ""
+		},
+		"ls_oracle_connectionString": {
+			"value": ""
+		},
+		"ls_saallpurposeadls_accountKey": {
+			"value": ""
+		},
+		"ls_azure_sql_properties_typeProperties_server": {
+			"value": "server0085.database.windows.net"
+		},
+		"ls_azure_sql_properties_typeProperties_database": {
+			"value": "practiceDB"
+		},
+		"ls_azure_sql_properties_typeProperties_userName": {
+			"value": "OO85-admin"
+		},
+		"ls_key_vault_properties_typeProperties_baseUrl": {
+			"value": "https://kv-access-python.vault.azure.net/"
+		},
+		"ls_saallpurposeadls_properties_typeProperties_url": {
+			"value": "https://saallpurposeadls.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
