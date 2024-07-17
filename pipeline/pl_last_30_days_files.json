@@ -117,15 +117,29 @@
 					"dataflow": {
 						"referenceName": "dataflow1",
 						"type": "DataFlowReference",
+						"parameters": {
+							"file_name": {
+								"value": "@pipeline().parameters.file_1",
+								"type": "Expression"
+							},
+							"file_name2": {
+								"value": "@pipeline().parameters.file2",
+								"type": "Expression"
+							},
+							"file_nmae3": {
+								"value": "@pipeline().parameters.file_3",
+								"type": "Expression"
+							}
+						},
 						"datasetParameters": {
 							"sink2": {
-								"file_name_venkat": "file_1"
+								"file_name_venkat": "file1"
 							},
 							"sink3": {
-								"file_name_venkat": "file_2"
+								"file_name_venkat": "file2"
 							},
 							"sink4": {
-								"file_name_venkat": "file_3"
+								"file_name_venkat": "file3"
 							}
 						}
 					},
@@ -137,6 +151,20 @@
 				}
 			}
 		],
+		"parameters": {
+			"file_1": {
+				"type": "String",
+				"defaultValue": "'file1111'"
+			},
+			"file2": {
+				"type": "String",
+				"defaultValue": "'file2222'"
+			},
+			"file_3": {
+				"type": "String",
+				"defaultValue": "'file3333'"
+			}
+		},
 		"variables": {
 			"name": {
 				"type": "String"
