@@ -1,17 +1,26 @@
 {
-	"name": "DelimitedText1",
+	"name": "ds_sink_venkat",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_saallpurposeadls",
 			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"file_name_venkat": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Data_file1.csv",
-				"fileSystem": "source"
+				"fileName": {
+					"value": "@dataset().file_name_venkat",
+					"type": "Expression"
+				},
+				"folderPath": "venkat_sink",
+				"fileSystem": "sink"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

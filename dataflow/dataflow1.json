@@ -9,7 +9,7 @@
 						"referenceName": "DelimitedText1",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "source2"
 				}
 			],
 			"sinks": [
@@ -19,11 +19,32 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_sink_venkat",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_sink_venkat",
+						"type": "DatasetReference"
+					},
+					"name": "sink3"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_sink_venkat",
+						"type": "DatasetReference"
+					},
+					"name": "sink4"
 				}
 			],
 			"transformations": [
 				{
-					"name": "cleanedColumn"
+					"name": "split1"
 				}
 			],
 			"scriptLines": [
@@ -40,10 +61,11 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(Deductible = regexReplace(toString(Deductible),',',''),",
-				"          Amount = regexExtract(Amount, 'More than \\\\d+', 2)) ~> cleanedColumn",
-				"cleanedColumn sink(allowSchemaDrift: true,",
+				"     ignoreNoFilesFound: false) ~> source2",
+				"source2 split(Table_number=='73.#1',",
+				"     Table_number==\"73.#2\",",
+				"     disjoint: false) ~> split1@(tablenumber731, tablenumber1, tablenumber732)",
+				" sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          State_code as string,",
@@ -60,7 +82,61 @@
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> sink1",
+				"split1@tablenumber731 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          State_code as string,",
+				"          Table_number as string,",
+				"          Effective_date as string,",
+				"          Exp_date as string,",
+				"          Terr_code as string,",
+				"          Amount as string,",
+				"          Deductible as string,",
+				"          Symbol as string,",
+				"          Factor as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2",
+				"split1@tablenumber1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          State_code as string,",
+				"          Table_number as string,",
+				"          Effective_date as string,",
+				"          Exp_date as string,",
+				"          Terr_code as string,",
+				"          Amount as string,",
+				"          Deductible as string,",
+				"          Symbol as string,",
+				"          Factor as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink3",
+				"split1@tablenumber732 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          State_code as string,",
+				"          Table_number as string,",
+				"          Effective_date as string,",
+				"          Exp_date as string,",
+				"          Terr_code as string,",
+				"          Amount as string,",
+				"          Deductible as string,",
+				"          Symbol as string,",
+				"          Factor as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink4"
 			]
 		}
 	}
