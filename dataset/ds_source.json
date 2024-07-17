@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "New XLSX Worksheet.csv",
 				"folderPath": "data-files",
 				"fileSystem": "source"
 			},

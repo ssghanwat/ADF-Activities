@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -82,7 +83,10 @@
 														"storeSettings": {
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
-															"wildcardFileName": "@concat(item().name)",
+															"wildcardFileName": {
+																"value": "@concat(item().name)",
+																"type": "Expression"
+															},
 															"enablePartitionDiscovery": false
 														},
 														"formatSettings": {
@@ -152,7 +156,10 @@
 														"storeSettings": {
 															"type": "AzureBlobFSReadSettings",
 															"recursive": true,
-															"wildcardFileName": "@concat(item().name)",
+															"wildcardFileName": {
+																"value": "@concat(item().name)",
+																"type": "Expression"
+															},
 															"enablePartitionDiscovery": false
 														},
 														"formatSettings": {

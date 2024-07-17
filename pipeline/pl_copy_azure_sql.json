@@ -44,11 +44,7 @@
 				"outputs": [
 					{
 						"referenceName": "ds_oracle",
-						"type": "DatasetReference",
-						"parameters": {
-							"schemaName": "oracle_schema",
-							"tableName": "employee2"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}

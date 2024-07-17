@@ -49,17 +49,7 @@
 				"inputs": [
 					{
 						"referenceName": "ds_oracle",
-						"type": "DatasetReference",
-						"parameters": {
-							"schemaName": {
-								"value": "@pipeline().parameters.schema_name",
-								"type": "Expression"
-							},
-							"tableName": {
-								"value": "@pipeline().parameters.table_name",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
