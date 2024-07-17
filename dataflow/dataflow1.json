@@ -43,9 +43,8 @@
 			"scriptLines": [
 				"parameters{",
 				"     file_name as string,",
-				"     file_name2 as string (file2\r",
-				"),",
-				"     file_nmae3 as string (file3)",
+				"     file_name2 as string ('file2'),",
+				"     file_nmae3 as string ('file3')",
 				"}",
 				"source(output(",
 				"          State_code as string,",
