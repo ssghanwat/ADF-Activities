@@ -1,0 +1,9 @@
+{
+	"name": "adf-allpurpose-backup",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "bc5675b8-3fab-46e6-b055-51007deac3d9",
+		"tenantId": "cef7987e-bbb9-4c01-ab37-82afe493385f"
+	}
+}
