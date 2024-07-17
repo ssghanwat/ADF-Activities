@@ -23,8 +23,8 @@
 			}
 		],
 		"typeProperties": {
-			"schema": "demo",
-			"table": "employee1"
+			"schema": "DEMO",
+			"table": "EMPLOYEE1"
 		}
 	}
 }

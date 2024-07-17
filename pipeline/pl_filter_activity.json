@@ -3,61 +3,55 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Filter1",
-				"type": "Filter",
+				"name": "Get Metadata",
+				"type": "GetMetadata",
 				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@pipeline().parameters.list",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@greater(item(), 3)",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Filter1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
 				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
 					"secureOutput": false,
 					"secureInput": false
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "variable",
-					"value": {
-						"value": "@activity('Filter1').output.value",
-						"type": "Expression"
+					"dataset": {
+						"referenceName": "ds_source",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
 					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true
 				}
 			}
 		],
-		"parameters": {
-			"list": {
-				"type": "array",
-				"defaultValue": [
-					1,
-					2,
-					3,
-					4,
-					5,
-					6,
-					7,
-					8
-				]
-			}
-		},
 		"variables": {
 			"variable": {
 				"type": "Array"

@@ -5,26 +5,12 @@
 			"referenceName": "ls_oracle",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"schemaName": {
-				"type": "string"
-			},
-			"tableName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "OracleTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": {
-				"value": "@dataset().schemaName",
-				"type": "Expression"
-			},
-			"table": {
-				"value": "@dataset().tableName",
-				"type": "Expression"
-			}
+			"schema": "ORACLE_SCHEMA",
+			"table": "EMPLOYEE2"
 		}
 	}
 }
