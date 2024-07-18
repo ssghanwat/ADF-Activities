@@ -1,0 +1,26 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_azure_sql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			},
+			{
+				"name": "address",
+				"type": "varchar"
+			}
+		]
+	}
+}
