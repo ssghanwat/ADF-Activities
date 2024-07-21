@@ -1,0 +1,7 @@
+{
+	"name": "storage_endpoint",
+	"properties": {
+		"privateLinkResourceId": "/subscriptions/d04c7a55-1975-494d-846a-ca49ed456e7a/resourceGroups/rg-generic/providers/Microsoft.Storage/storageAccounts/saallpurposeadls",
+		"groupId": "dfs"
+	}
+}
